@@ -24,8 +24,8 @@ describe GlobalLock::Lock do
 
     context "is not available" do
       it "does not get the lock" do
-        real_key = @gl.lock(test_lock_name)
-        false_key = @gl.lock(test_lock_name)
+        real_key = @gl.lock(test_lock_name, retry_time: 0)
+        false_key = @gl.lock(test_lock_name, retry_time: 0)
 
         expect(false_key).to eql(false)
       end
