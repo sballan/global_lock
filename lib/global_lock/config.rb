@@ -27,6 +27,6 @@ class GlobalLock::Config
   end
 
   def with_redis(&block)
-    redis_pool.with(block)
+    redis_pool.with(&block)
   end
 end

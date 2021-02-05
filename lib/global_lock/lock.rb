@@ -1,7 +1,7 @@
 class GlobalLock::Lock
   attr_reader :config
 
-  def initialize(opts)
+  def initialize(opts = {})
     @config = GlobalLock::Config.new(opts)
   end
 
@@ -37,7 +37,7 @@ class GlobalLock::Lock
 
     if success
       key
-    elsif retry_time > 0.seconds
+    elsif retry_time > 0
       sleep backoff_time
 
       # Note: really, the backoff factor should be multiplied by retry_wait
@@ -62,7 +62,7 @@ class GlobalLock::Lock
   end
 
   def correct_key?(name, possible_key)
-    return false unless name && possible_key && !name.empty? && !possible_key.empty
+    return false unless name && possible_key && !name.empty? && !possible_key.empty?
 
     actual_key = fetch_lock_key(name)
     possible_key == actual_key
