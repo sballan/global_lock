@@ -9,6 +9,7 @@ Gem::Specification.new do |s|
   s.license = "MIT"
 
   s.add_dependency "redis"
+  s.add_dependency "connection_pool"
   s.add_development_dependency "rspec"
   s.add_development_dependency "mock_redis"
 end
