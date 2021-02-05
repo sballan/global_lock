@@ -7,7 +7,7 @@ class GlobalLock::Lock
 
   def with_lock(name, existing_key=nil, opts={}, &block)
     opts = config.lock_opts.merge(opts)
-    raise ArgumentError.new("Block required") unless block.present?
+    raise ArgumentError.new("Block required") unless block_given?
 
     ret_val = nil
 
@@ -46,7 +46,7 @@ class GlobalLock::Lock
         name,
         ttl: ttl,
         retry_time: retry_time - backoff_time,
-        backoff_time: retry_wait * 2 * rand(0.5..1.5)
+        backoff_time: backoff_time * 2 * rand(0.5..1.5)
       )
     else
       false
