@@ -1,8 +1,8 @@
 class GlobalLock::Lock
   attr_reader :config
 
-  def initialize(config)
-    @config = config
+  def initialize(opts)
+    @config = GlobalLock::Config.new(opts)
   end
 
   def with_lock(name, existing_key=nil, opts={}, &block)
@@ -72,7 +72,7 @@ class GlobalLock::Lock
 
   def write_lock(name, key, ex: nil)
     ex ||= config.default_ttl
-    raise ArgumentError.new("Cannot write_lock with blank name") if name.blank?
+    raise ArgumentError.new("Cannot write_lock with blank name") if name.empty?
 
     res = config.with_redis do |redis|
       redis.set(config.redis_prefix + name, key, ex: ex, nx: true)
