@@ -1,3 +1,5 @@
+require 'securerandom'
+
 require 'redis'
 require 'connection_pool'
 
