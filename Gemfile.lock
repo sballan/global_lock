@@ -8,6 +8,8 @@ GEM
   remote: https://rubygems.org/
   specs:
     diff-lcs (1.4.4)
+    mock_redis (0.27.3)
+      ruby2_keywords
     redis (4.2.5)
     rspec (3.10.0)
       rspec-core (~> 3.10.0)
@@ -22,12 +24,14 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
     rspec-support (3.10.2)
+    ruby2_keywords (0.0.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   global_lock!
+  mock_redis
   rspec
 
 BUNDLED WITH
