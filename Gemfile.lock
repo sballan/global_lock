@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    global_lock (0.0.2)
+    global_lock (0.0.3)
       connection_pool
       redis
 

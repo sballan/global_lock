@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "global_lock"
-  s.version = "0.0.2"
+  s.version = "0.0.3"
   s.summary = "Global Lock"
   s.description = "Global Lock"
   s.authors = ["Samuel Ballan"]
