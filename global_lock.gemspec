@@ -7,4 +7,7 @@ Gem::Specification.new do |s|
   s.email = ["sgb4622@gmail.com"]
   s.files = ["lib/global_lock.rb"]
   s.license = "MIT"
+
+  s.add_dependency "redis"
+  s.add_development_dependency "rspec"
 end
