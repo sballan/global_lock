@@ -1,0 +1,2 @@
+module GlobalLock
+end
