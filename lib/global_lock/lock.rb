@@ -2,7 +2,11 @@ class GlobalLock::Lock
   attr_reader :config
 
   def initialize(opts = {})
-    @config = GlobalLock::Config.new(opts)
+    if opts.is_a? GlobalLock
+      @config = opts
+    else
+      @config = GlobalLock::Config.new(opts)
+    end
   end
 
   def with_lock(name, existing_key=nil, opts={}, &block)

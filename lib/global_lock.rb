@@ -8,12 +8,18 @@ module GlobalLock
 
   attr_reader :config
 
-  def config=(config_opts)
-    @config = GlobalLock::Config.new(config_opts)
+  def singleton
+    @singleton = GlobalLock::Lock.new(config)
   end
 
   def config(&block)
-    block.call(@config)
+    @config ||= GlobalLock::Config.new
+
+    if block_given?
+      block.call(@config)
+    else
+      @config
+    end
   end
 end
 
